@@ -119,16 +119,16 @@ def obtainTopAddress():
 output = []
 address = obtainTopAddress()
 for i in address:
-    # try:
-    data = lnData1(i[0], i[1])
-    data = dataToDf(data)
-    output.append(data)
+    try:
+        data = lnData1(i[0], i[1])
+        data = dataToDf(data)
+        output.append(data)
     # reader = pd.read_excel(r'output.xlsx')
     # df = pd.DataFrame(output)
     # df.to_excel('output.xlsx',mode='a',index=False,header=False, startrow=len(reader)+1)
-    print('Finished processing item ID: ' + str(i))
-    # except:
-        # print('Item ID ' + str(i) + ' not found')
+        print('Finished processing item ID: ' + str(i))
+    except:
+        print('Item ID ' + str(i) + ' not found')
 columnName = ['Name','Rarity','Type','ID','Ownership','Top Chapter','Top Commission','Top Arena','Obtained by']
 df = pd.DataFrame(output,columns=columnName)
 df.to_excel("output.xlsx")
